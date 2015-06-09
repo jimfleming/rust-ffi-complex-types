@@ -1,8 +1,8 @@
 var ffi = require("ffi");
 var assert = require("assert");
 
-var ref = require('ref');
-var StructType = require('ref-struct');
+var ref = require("ref");
+var StructType = require("ref-struct");
 
 var usize = ref.types.size_t;
 
