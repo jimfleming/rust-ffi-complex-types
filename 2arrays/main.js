@@ -11,8 +11,8 @@ var lib = ffi.Library("target/debug/libcounter", {
   "createCounter": [ "pointer", [ "uint32" ] ],
   "destroyCounter": [ "void", [ "pointer" ] ],
   "getCounterValue": [ "uint32", [ "pointer" ] ],
-  "incrementCounterBy": [ "uint32", [ "pointer", UInt32Array, "uint32" ] ],
-  "decrementCounterBy": [ "uint32", [ "pointer", UInt32Array, "uint32" ] ]
+  "incrementCounterBy": [ "uint32", [ "pointer", UInt32Array, "size_t" ] ],
+  "decrementCounterBy": [ "uint32", [ "pointer", UInt32Array, "size_t" ] ]
 });
 
 var ptr = lib.createCounter(4);
