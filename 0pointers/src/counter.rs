@@ -1,23 +1,23 @@
 pub struct Counter {
-    val: usize
+    val: u32
 }
 
 impl Counter {
-    pub fn new(val: usize) -> Counter {
+    pub fn new(val: u32) -> Counter {
         Counter{val: val}
     }
 
-    pub fn get(&self) -> usize {
+    pub fn get(&self) -> u32 {
         self.val
     }
 
-    pub fn incr(&mut self, by: usize) -> usize {
-        self.val = self.val + by;
+    pub fn incr(&mut self, by: u32) -> u32 {
+        self.val += by;
         self.val
     }
 
-    pub fn decr(&mut self, by: usize) -> usize {
-        self.val = self.val - by;
+    pub fn decr(&mut self, by: u32) -> u32 {
+        self.val -= by;
         self.val
     }
 }

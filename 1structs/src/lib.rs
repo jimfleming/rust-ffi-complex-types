@@ -12,19 +12,19 @@ pub extern fn createCounter(args: Args) -> *mut Counter {
 }
 
 #[no_mangle]
-pub extern fn getCounterValue(ptr: *mut Counter) -> usize {
+pub extern fn getCounterValue(ptr: *mut Counter) -> u32 {
     let mut _counter = unsafe { &mut *ptr };
     _counter.get()
 }
 
 #[no_mangle]
-pub extern fn incrementCounterBy(ptr: *mut Counter) -> usize {
+pub extern fn incrementCounterBy(ptr: *mut Counter) -> u32 {
     let mut _counter = unsafe { &mut *ptr };
     _counter.incr()
 }
 
 #[no_mangle]
-pub extern fn decrementCounterBy(ptr: *mut Counter) -> usize {
+pub extern fn decrementCounterBy(ptr: *mut Counter) -> u32 {
     let mut _counter = unsafe { &mut *ptr };
     _counter.decr()
 }

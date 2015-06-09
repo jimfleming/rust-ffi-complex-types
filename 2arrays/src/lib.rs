@@ -6,26 +6,26 @@ use counter::Counter;
 use std::mem::transmute;
 
 #[no_mangle]
-pub extern fn createCounter(val: usize) -> *mut Counter {
+pub extern fn createCounter(val: u32) -> *mut Counter {
     let _counter = &mut *Box::new(Counter::new(val));
     _counter
 }
 
 #[no_mangle]
-pub extern fn getCounterValue(ptr: *mut Counter) -> usize {
+pub extern fn getCounterValue(ptr: *mut Counter) -> u32 {
     let mut _counter = unsafe { &mut *ptr };
     _counter.get()
 }
 
 #[no_mangle]
-pub extern fn incrementCounterBy(ptr: *mut Counter, bys_ptr: *const usize, bys_len: usize) -> usize {
+pub extern fn incrementCounterBy(ptr: *mut Counter, bys_ptr: *const u32, bys_len: usize) -> u32 {
     let mut _counter = unsafe { &mut *ptr };
     let bys = unsafe { std::slice::from_raw_parts(bys_ptr, bys_len) };
     _counter.incr(bys)
 }
 
 #[no_mangle]
-pub extern fn decrementCounterBy(ptr: *mut Counter, bys_ptr: *const usize, bys_len: usize) -> usize {
+pub extern fn decrementCounterBy(ptr: *mut Counter, bys_ptr: *const u32, bys_len: usize) -> u32 {
     let mut _counter = unsafe { &mut *ptr };
     let bys = unsafe { std::slice::from_raw_parts(bys_ptr, bys_len) };
     _counter.decr(bys)

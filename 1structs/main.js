@@ -4,21 +4,19 @@ var assert = require("assert");
 var ref = require("ref");
 var StructType = require("ref-struct");
 
-var usize = ref.types.size_t;
-
 // Define a struct type with properties matching the order and type of the
 // receiving struct type.
 var Args = StructType({
-  init: usize,
-  by: usize
+  init: ref.types.uint32,
+  by: ref.types.uint32
 });
 
 var lib = ffi.Library("target/debug/libcounter", {
   "createCounter": [ "pointer", [ Args ] ],
   "destroyCounter": [ "void", [ "pointer" ] ],
-  "getCounterValue": [ "size_t", [ "pointer" ] ],
-  "incrementCounterBy": [ "size_t", [ "pointer" ] ],
-  "decrementCounterBy": [ "size_t", [ "pointer" ] ]
+  "getCounterValue": [ "uint32", [ "pointer" ] ],
+  "incrementCounterBy": [ "uint32", [ "pointer" ] ],
+  "decrementCounterBy": [ "uint32", [ "pointer" ] ]
 });
 
 var ptr = lib.createCounter(new Args({ init: 4, by: 2 }));

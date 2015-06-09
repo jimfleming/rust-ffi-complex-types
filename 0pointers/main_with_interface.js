@@ -3,11 +3,11 @@ var assert = require("assert");
 
 // Describe our API"s functions, their return types and arguments.
 var lib = ffi.Library("target/debug/libcounter", {
-  "createCounter": [ "pointer", [ "size_t" ] ],
+  "createCounter": [ "pointer", [ "uint32" ] ],
   "destroyCounter": [ "void", [ "pointer" ] ],
-  "getCounterValue": [ "size_t", [ "pointer" ] ],
-  "incrementCounterBy": [ "size_t", [ "pointer", "size_t" ] ],
-  "decrementCounterBy": [ "size_t", [ "pointer", "size_t" ] ]
+  "getCounterValue": [ "uint32", [ "pointer" ] ],
+  "incrementCounterBy": [ "uint32", [ "pointer", "uint32" ] ],
+  "decrementCounterBy": [ "uint32", [ "pointer", "uint32" ] ]
 });
 
 class Counter {

@@ -1,11 +1,11 @@
 pub struct Args {
-    init: usize,
-    by: usize,
+    init: u32,
+    by: u32,
 }
 
 pub struct Counter {
-    val: usize,
-    by: usize,
+    val: u32,
+    by: u32,
 }
 
 impl Counter {
@@ -16,17 +16,17 @@ impl Counter {
         }
     }
 
-    pub fn get(&self) -> usize {
+    pub fn get(&self) -> u32 {
         self.val
     }
 
-    pub fn incr(&mut self) -> usize {
-        self.val = self.val + self.by;
+    pub fn incr(&mut self) -> u32 {
+        self.val += self.by;
         self.val
     }
 
-    pub fn decr(&mut self) -> usize {
-        self.val = self.val - self.by;
+    pub fn decr(&mut self) -> u32 {
+        self.val -= self.by;
         self.val
     }
 }
