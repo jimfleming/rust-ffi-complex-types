@@ -5,9 +5,6 @@ mod counter;
 use counter::Counter;
 use std::mem::transmute;
 
-/// Allocate a new counter on the heap and return its pointer.
-///
-/// Dereferencing is preferred over transmute here since it's generally slightly more restrictive.
 #[no_mangle]
 pub extern fn createCounter(val: u32) -> *mut Counter {
     let _counter = unsafe { transmute(Box::new(Counter::new(val))) };
@@ -32,9 +29,6 @@ pub extern fn decrementCounterBy(ptr: *mut Counter, by: u32) -> u32 {
     _counter.decr(by)
 }
 
-/// Transmute the ptr back into its box so it can be dropped.
-///
-/// We could use Box::from_raw but it's currently unstable.
 #[no_mangle]
 pub extern fn destroyCounter(ptr: *mut Counter) {
     let _counter: Box<Counter> = unsafe{ transmute(ptr) };
