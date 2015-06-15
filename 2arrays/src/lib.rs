@@ -7,7 +7,7 @@ use std::mem::transmute;
 
 #[no_mangle]
 pub extern fn createCounter(val: u32) -> *mut Counter {
-    let _counter = &mut *Box::new(Counter::new(val));
+    let _counter = unsafe { transmute(Box::new(Counter::new(val))) };
     _counter
 }
 
